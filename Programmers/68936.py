@@ -14,8 +14,8 @@
 
 def check_quadrant(arr, length):
 '''
-반환 조건: 모두 0 or 모두 1 or 2x2 행렬이 됐을 때
-그 외의 경우는 사분원을 쪼개가며 재귀호출
+반환 조건: 모두 0 or 모두 1 ( 1x1 행렬이 될 때까지 반복)
+그 외의 경우는 사분면으로 쪼개가며 재귀호출
 '''
     is_zero = all(all(x == 0 for x in row) for row in arr)
     is_one = all(all(x == 1 for x in row) for row in arr)
