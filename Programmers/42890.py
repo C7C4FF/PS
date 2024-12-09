@@ -3,6 +3,38 @@
 # 행렬을 미리 만들어두고 직접 돌리기...
 # 2 2 5 4 -> 22 23 24 / 34 44 54 / 53 52 / 42 32
 
+# dx, dy 로 바꾸고, while 문으로 반복하게......
+
+def rotate_and_find(query, matrix):
+    x1, y1, x2, y2 = [v - 1 for v in query]
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # 우, 하, 좌, 상
+    cur_x, cur_y = x1, y1  # 시작 좌표
+    stack = []
+    positions = []
+    
+    # 테두리 요소 가져오기
+    for dx, dy in directions:
+        while x1 <= cur_x + dx <= x2 and y1 <= cur_y + dy <= y2:
+            cur_x += dx
+            cur_y += dy
+            stack.append(matrix[cur_x][cur_y])
+            positions.append((cur_x, cur_y))
+    
+    
+    smallest = min(stack)
+    stack = [stack[-1]] + stack[:-1]  # 마지막 요소를 맨 앞으로
+    
+    for (x, y), val in zip(positions, stack):
+        matrix[x][y] = val
+    
+    return smallest
+
+def solution(rows, columns, queries):
+    matrix = [[(columns * i) + j + 1 for j in range(columns)] for i in range(rows)]
+    
+    return [rotate_and_find_min(query, matrix) for query in queries]
+    
+'''
 def rotation_stack(query, matrix):
     stack = []
     cur_stack = []
@@ -54,3 +86,4 @@ def solution(rows, columns, queries):
         answer.append(smallest)
         
     return answer
+'''
