@@ -1,4 +1,4 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/42890
+# https://school.programmers.co.kr/learn/courses/30/lessons/77485
 
 # 행렬을 미리 만들어두고 직접 돌리기...
 # 2 2 5 4 -> 22 23 24 / 34 44 54 / 53 52 / 42 32
