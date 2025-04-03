@@ -14,3 +14,19 @@ class Solution:
             diff = max(diff, largest_value - nums[i])
             
         return ans if ans >= 0 else 0
+
+'''
+# bruteforce 로도 풀기
+
+class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        ans = 0
+
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                for k in range(j+1, len(nums)):
+                    print(i,j,k)
+                    ans = max(ans, (nums[i] - nums[j]) * nums[k])
+        
+        return ans if ans >= 0 else 0
+'''
