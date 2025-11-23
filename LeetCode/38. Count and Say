@@ -1,0 +1,40 @@
+# https://leetcode.com/problems/count-and-say/description/
+# 1, 11, 21, 1211, 111221, 
+
+class Solution:
+    def mapping(self, nums: str) -> list:
+        '''
+        한 숫자가 얼마나 반복되는지 확인하고, [횟수, 수] 꼴의 리스트로 반환하는 함수
+        '''
+        result = []
+        prev = nums[0]
+        cnt = 1
+
+        for n in nums[1:]:
+            if n == prev:
+                cnt += 1
+            else:
+                result.append([cnt, prev])
+                prev = n
+                cnt = 1
+
+        result.append([cnt, prev])
+
+        return result
+
+    def merge(self, lst: list) -> str:
+        result = ''
+        for times, n in lst:
+            result += str(times) + n
+        
+        return result
+
+    def countAndSay(self, n: int) -> str:
+        cnt = 1
+        nums = "1"
+
+        while cnt < n:
+            nums = self.merge(self.mapping(nums))
+            cnt += 1
+
+        return nums
