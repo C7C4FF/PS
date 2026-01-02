@@ -16,3 +16,17 @@ class Solution:
         for v, lst in pos.items():
             if len(lst) == n:
                 return v
+'''
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        temp = []
+        for i in range(len(nums)):
+            if nums[i] in temp:
+                return nums[i]
+            else:
+                temp.append(nums[i])
+#####
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        return Counter(nums).most_common()[0][0]
+'''
