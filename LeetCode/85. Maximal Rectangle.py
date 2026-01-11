@@ -21,7 +21,7 @@ class Solution:
 
                 while stack and stack[-1][1] > height:
                     w, h = stack.pop()
-                    width = start - w
+                    width = i - w
                     max_size = max(max_size, width * h)
                     start = w
 
