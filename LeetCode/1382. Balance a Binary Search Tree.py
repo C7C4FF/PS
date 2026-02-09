@@ -1,3 +1,34 @@
+# https://leetcode.com/problems/balance-a-binary-search-tree/submissions/1913006582/?envType=daily-question&envId=2026-02-09
+# inorder 순회로 트리의 정보를 다 얻은 뒤에 균형잡힌 이진트리로 만들기
+
+class Solution:
+    def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        self.val_tree = []
+
+        def inorder(node: Optional[TreeNode]) -> None:
+            if not node:
+                return None
+            inorder(node.left)
+            self.val_tree.append(node)
+            inorder(node.right)
+
+        def build(l: int, r: int) -> Optional[TreeNode]:
+            if l > r:
+                return None
+            
+            m = (l + r) // 2
+            node = self.val_tree[m]
+            node.left = build(l, m - 1)
+            node.right = build(m+1, r)
+
+            return node
+        
+        inorder(root)
+        balanced = build(0, len(self.val_tree) - 1)
+        
+        return balanced
+
+'''
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -31,3 +62,4 @@ class Solution:
 
         node = TreeNode(inorder[mid], left, right)
         return node
+'''
