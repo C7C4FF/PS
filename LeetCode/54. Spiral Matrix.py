@@ -1,5 +1,46 @@
 # https://leetcode.com/problems/spiral-matrix/description/
 
+# 상하좌우의 경계값을 만들고, 한번 돌 때마다 경계 좁힘
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        ans = []
+        m, n = len(matrix), len(matrix[0])
+        total = m * n
+        
+        top, bottom = 0, m-1
+        left, right = 0, n-1
+
+        while left <= right and top <= bottom:
+            # 오른쪽으로
+            for i in range(left, right+1):
+                ans.append(matrix[top][i])
+            top += 1
+
+            if len(ans) == total: break
+
+            # 아래쪽으로
+            for j in range(top, bottom+1):
+                ans.append(matrix[j][right])
+            right -= 1
+
+            if len(ans) == total: break
+
+            # 왼쪽으로
+            for k in range(right, left-1, -1):
+                ans.append(matrix[bottom][k])
+            bottom -= 1
+
+            if len(ans) == total: break
+
+            # 위로
+            for l in range(bottom, top-1, -1):
+                ans.append(matrix[l][left])
+            left += 1
+        
+        return ans
+
+# -----------------------------
 # 오른쪽 > 아래쪽 > 왼쪽 > 위쪽 으로 반복해가면서 ans에 입력하기. 방문한 곳은 "." 으로 처리
 # 경계값과 i,j 를 헷갈리지 않도록 주의하기
 
