@@ -2,6 +2,18 @@
 # 글자가 모두 똑같이 있는지 확인하기 위해 set 사용
 # 홀수는 홀수자리에, 짝수는 짝수 자리에 존재해야 함
 
+# 짝수자리 Counter 끼리 맞는지, 홀수자리 Counter 끼리 맞는지 확인
+
+class Solution:
+    def checkStrings(self, s1: str, s2: str) -> bool:
+        if Counter(s1[::2]) != Counter(s2[::2]):
+            return False
+        if Counter(s1[1::2]) != Counter(s2[1::2]):
+            return False
+
+        return True
+
+
 class Solution:
     def checkStrings(self, s1: str, s2: str) -> bool:
         ch = defaultdict(list)
