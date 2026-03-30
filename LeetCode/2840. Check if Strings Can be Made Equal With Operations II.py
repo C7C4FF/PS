@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii/description/
+# https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii/description/?envType=daily-question&envId=2026-03-30
 # 글자가 모두 똑같이 있는지 확인하기 위해 set 사용
 # 홀수는 홀수자리에, 짝수는 짝수 자리에 존재해야 함
 
