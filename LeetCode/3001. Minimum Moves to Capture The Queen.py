@@ -9,6 +9,36 @@ class Solution:
         queen = (e, f, 'q')
 
         if a == e:
+            if not (c == a and min(b, f) < d < max(b, f)):
+                return 1
+                
+        if b == f:
+            if not (d == b and min(a, e) < c < max(a, e)):
+                return 1
+
+        if abs(c-e) == abs(d-f):
+            if abs(c-a) == abs(d-b) and abs(e-a) == abs(f-b):
+                if (abs(c-e) * abs(b-f)) == (abs(a-e) * abs(d-f)):
+                    line = [rook, bishop, queen]
+                    line.sort(key=lambda x:x[0])
+                    
+                    for i in range(3):
+                        if line[i][2] == 'r' and (i == 0 or i == 2):
+                            return 1
+            else:
+                return 1
+        
+        return 2
+
+'''
+
+class Solution:
+    def minMovesToCaptureTheQueen(self, a: int, b: int, c: int, d: int, e: int, f: int) -> int:
+        rook = (a, b, 'r')
+        bishop = (c, d, 'b')
+        queen = (e, f, 'q')
+
+        if a == e:
             if not (c == a and min(b, f) < d < max(b, f)): # 중앙에 비숍이 있는지 확인
                 return 1
             else:
@@ -32,5 +62,7 @@ class Solution:
                 return 1
         else:
             return 2
+
+'''
 
         
