@@ -20,5 +20,32 @@ class Solution:
         
         return ans
 
+
+'''
+# 정렬되어 있으면 이진탐색으로도 풀 수 있음
+
+class Solution:
+    def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
+        ans = 0
+        n, m = len(nums1), len(nums2)
         
+        for i in range(n):
+            l, r = i, m-1
+            farthest = i
+
+            while l <= r:
+                mid = (l+r)//2
+
+                if nums2[mid] >= nums1[i]:
+                    farthest = mid
+                    l = mid+1
+                else:
+                    r = mid-1
+
+            ans = max(ans, farthest-i)
+        
+        return ans
+
+        
+                
                 
