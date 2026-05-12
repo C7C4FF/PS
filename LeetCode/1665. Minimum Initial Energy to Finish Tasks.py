@@ -12,3 +12,19 @@ class Solution:
             ans = max(ans + task[0], task[1])
 
         return ans
+
+'''
+class Solution:
+    def minimumEffort(self, tasks: List[List[int]]) -> int:
+        tasks.sort(key=lambda x:x[1] - x[0], reverse=True)
+
+        ans = 0 # 최소 초기 에너지
+        spent = 0 # 지금까지 사용한 누적 에너지
+
+        for actual, minimum in tasks:
+            ans = max(ans, spent + minimum)
+
+            spent += actual # 작업이 끝났으니 더해주기
+
+        return ans
+'''
