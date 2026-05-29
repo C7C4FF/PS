@@ -12,3 +12,21 @@ class Solution:
             digit_sum.append(temp_sum)
 
         return min(digit_sum)
+
+'''
+
+class Solution:
+    def minElement(self, nums: List[int]) -> int:
+        digit_sum = float('inf')
+
+        for num in nums:
+            temp_sum = 0
+            while num:
+                temp_sum += num % 10
+                num //= 10
+            
+            digit_sum = min(digit_sum, temp_sum)
+
+        return digit_sum
+
+'''
