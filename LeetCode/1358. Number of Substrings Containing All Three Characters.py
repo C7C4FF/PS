@@ -1,3 +1,27 @@
+# https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/?envType=daily-question&envId=2026-06-30
+# 세 문자가 모두 최소 한 번씩 등장했다면
+# 인덱스 0부터 min_idx 사이에서 시작하고, 현재 인덱스 i에서 끝나는 
+# 모든 부분 문자열은 'a', 'b', 'c'를 모두 포함하게 됨.
+
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        ans = 0
+        # a, b, c의 가장 최근 인덱스를 저장 (아직 발견되지 않았으므로 초기값은 -1)
+        last_seen = {'a': -1, 'b': -1, 'c': -1}
+        
+        for i, char in enumerate(s):
+            last_seen[char] = i
+            
+            if last_seen['a'] != -1 and last_seen['b'] != -1 and last_seen['c'] != -1:
+                min_idx = min(last_seen['a'], last_seen['b'], last_seen['c'])
+                
+                
+                ans += min_idx + 1
+                
+        return ans
+
+'''
+
 # abc 가 모두 최소 한 번씩 등장
 # substring 요소가 같더라도, 그 index가 다르면 포함시킴
 # len(Counter(substring)) == 3 일 때마다 +1 하기 .. 근데 저번에도 O(n^2)이면 TLE 던데 .. -> TLE
@@ -49,7 +73,7 @@ class Solution:
                     
 
 
-'''
+
 시간 초과
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
